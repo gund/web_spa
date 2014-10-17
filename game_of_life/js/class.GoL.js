@@ -4,10 +4,17 @@
 
 window.game = window.game || {};
 
-(function(namespace) {
+(function (namespace) {
     "use strict";
 
     function GameOfLife(options) {
+        /**
+         * @type {GameOfLife}
+         */
+        var me = this;
+
+        // Constructor
+
         if (options === undefined) options = {};
 
         this.settings = {
@@ -23,17 +30,21 @@ window.game = window.game || {};
             }
         }
 
-        this.initRender();
+        _initRender();
+
+        // Private Section
+
+        function _initRender() {
+            me.renderable = new namespace.Renderable({
+                renderTo: "render-area"
+            });
+            me.renderable.getCtx().fillRect(0, 0, me.renderable.getW(), me.renderable.getH());
+            me.renderable.swapBuffers();
+        }
     }
 
-    GameOfLife.prototype.initRender = function() {
-        this.renderable = new namespace.Renderable({
-            renderTo: "render-area"
-        });
-    };
+    // GameOfLife API
 
-    namespace.GoL = function(opt) {
-        var gol = new GameOfLife(opt);
-    };
+    namespace.GameOfLife = GameOfLife;
 
 })(window.game);

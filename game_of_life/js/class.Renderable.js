@@ -8,6 +8,13 @@ window.game = window.game || {};
     "use strict";
 
     function Renderable(options) {
+        /**
+         * @type {Renderable}
+         */
+        var me = this;
+
+        // Constructor
+
         if (options === undefined) options = {};
 
         this.settings = {
@@ -23,35 +30,70 @@ window.game = window.game || {};
             }
         }
 
-        this.prepareRender();
+        _prepareRender();
+
+        // Private Section
+
+        function _prepareRender() {
+            if (me.settings.renderTo === null) {
+                me.settings.renderTo = "render";
+                me.renderBlock = document.createElement('div');
+                me.renderBlock.setAttribute('id', me.settings.renderTo);
+                document.body.appendChild(me.renderBlock);
+            } else {
+                me.renderBlock = document.getElementById(me.settings.renderTo);
+            }
+
+            // Init Render
+            me.renderCanv = document.createElement('canvas');
+            me.renderCanv.setAttribute('width', me.settings.width.toString());
+            me.renderCanv.setAttribute('height', me.settings.height.toString());
+            me.renderBlock.appendChild(me.renderCanv);
+            me.renderCtx = me.renderCanv.getContext('2d');
+
+            // Init Buffer
+            me.bufferCanv = document.createElement('canvas');
+            me.bufferCanv.setAttribute('width', me.settings.width.toString());
+            me.bufferCanv.setAttribute('height', me.settings.height.toString());
+            me.bufferCtx = me.bufferCanv.getContext('2d');
+        }
     }
 
-    Renderable.prototype.prepareRender = function() {
-        if (this.settings.renderTo === null) {
-            this.settings.renderTo = "render";
-            this.renderBlock = document.createElement('div');
-            this.renderBlock.setAttribute('id', this.settings.renderTo);
-            document.body.appendChild(this.renderBlock);
-        } else {
-            this.renderBlock = document.getElementById(this.settings.renderTo);
-        }
+    // Renderable API
 
-        // Init Render
-        this.renderCanv = document.createElement('canvas');
-        this.renderCanv.setAttribute('width', this.settings.width.toString());
-        this.renderCanv.setAttribute('height', this.settings.height.toString());
-        this.renderBlock.appendChild(this.renderCanv);
-        this.renderCtx = this.renderCanv.getContext('2d');
-
-        // Init Buffer
-        this.bufferCanv = document.createElement('canvas');
-        this.bufferCanv.setAttribute('width', this.settings.width.toString());
-        this.bufferCanv.setAttribute('height', this.settings.height.toString());
-        this.bufferCtx = this.bufferCanv.getContext('2d');
+    /**
+     * Swap virtual buffer to a real
+     */
+    Renderable.prototype.swapBuffers = function () {
+        this.renderCtx.clearRect(0, 0, this.settings.width, this.settings.height);
+        if (this.settings.useBufferedOutput)
+            this.renderCtx.drawImage(this.bufferCanv, 0, 0, this.settings.width, this.settings.height);
     };
 
-    namespace.Renderable = function (opt) {
-        var renderable = new Renderable(opt);
+    /**
+     * Get actual rendering context
+     * @returns {CanvasRenderingContext2D}
+     */
+    Renderable.prototype.getCtx = function () {
+        return (this.settings.useBufferedOutput) ? this.bufferCtx : this.renderCtx;
     };
+
+    /**
+     * Get width of canvas
+     * @returns {number}
+     */
+    Renderable.prototype.getW = function () {
+        return this.settings.width;
+    };
+
+    /**
+     * Get height of canvas
+     * @returns {number}
+     */
+    Renderable.prototype.getH = function () {
+        return this.settings.height;
+    };
+
+    namespace.Renderable = Renderable;
 
 })(window.game);

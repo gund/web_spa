@@ -8,7 +8,7 @@ window.game = window.game || {};
     "use strict";
 
     function main() {
-        var game = new namespace.GoL();
+        var game = new namespace.GameOfLife();
     }
 
     window.onload = main;
