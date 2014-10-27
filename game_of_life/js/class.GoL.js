@@ -21,7 +21,7 @@ window.game = window.game || {};
             threeLive: 3,
             bushLive: 2,
             maxThreesBushes: 5,
-            bunnyHideInBush: true,
+            bunnySmart: false,
             wolfStep: 1,
             bunnyStep: 1,
             cellCount: 10,
@@ -35,14 +35,15 @@ window.game = window.game || {};
         this.settings.cellCount = parseInt(this.settings.cellCount);
 
         var WOLF_COLOR = "#0000FF";
-        var BUNNY_COLOR = "#CCCCCC";
-        var THREE_COLOR = "#006C8D";
+        var BUNNY_COLOR = "#919191";
+        var THREE_COLOR = "#096800";
         var BUSH_COLOR = "#00FF2A";
         var TIME2UPDATE = this.settings.updatePhysicEvery * 1000;
         this.grid = [];
         this.wolf = {};
         this.bunny = {};
         this.threes = [];
+        this.wolfWin = false;
 
         // Constructor
 
@@ -86,10 +87,8 @@ window.game = window.game || {};
                 color: BUNNY_COLOR
             });
             var wolfPos = _getAvailablePos();
-            console.log('wolfPos', wolfPos);
             me.wolf.setPosition(wolfPos.x, wolfPos.y);
             var bunnyPos = _getAvailablePos(1);
-            console.log('bunnyPos', bunnyPos);
             me.bunny.setPosition(bunnyPos.x, bunnyPos.y);
         }
 
@@ -99,33 +98,28 @@ window.game = window.game || {};
             var y = 0;
             var posFree;
             do {
-                posFree = true;
-                x = namespace.randMinMax(0, me.settings.cellCount-1);
-                y = namespace.randMinMax(0, me.settings.cellCount-1);
-                for (var i = 0; i < me.threes.length; ++i) {
-                    if (me.threes[i].getX() == x && me.threes[i].getY() == y) {
-                        posFree = false;
-                        break;
-                    }
-                }
-                if (checkLvl > 0 && me.wolf.getX() == x && me.wolf.getY() == y) posFree = false;
-                if (checkLvl > 1 && me.bunny.getX() == x && me.bunny.getY() == y) posFree = false;
+                x = namespace.randMinMax(0, me.settings.cellCount - 1);
+                y = namespace.randMinMax(0, me.settings.cellCount - 1);
+                posFree = _isXYFree(x, y, checkLvl);
             } while (!posFree);
             return {x: x, y: y};
         }
 
+        function _isXYFree(x, y, checkLvl) {
+            var posFree = true;
+            for (var i = 0; i < me.threes.length; ++i) {
+                if (me.threes[i].getX() == x && me.threes[i].getY() == y) {
+                    posFree = false;
+                    break;
+                }
+            }
+            if (checkLvl > 0 && me.wolf.getX() == x && me.wolf.getY() == y) posFree = false;
+            if (checkLvl > 1 && me.bunny.getX() == x && me.bunny.getY() == y) posFree = false;
+            return posFree;
+        }
+
         function _generateThrees(regenerate) {
             if (regenerate === undefined) regenerate = false;
-            if (regenerate) {
-                for (var i = 0; i < me.threes.length; ++i) {
-                    var lifeLong = me.threes[i].settings.type ? me.settings.threeLive : me.settings.bushLive;
-                    if (me.threes[i].settings.life + lifeLong < gamePeriod) {
-                        me.threes.splice(i, 1);
-                        i--;
-                    }
-                }
-                console.log('After delete', me.threes.length);
-            }
             var len = me.threes.length;
             var objCanGen = me.settings.maxThreesBushes - len;
             var obj2Gen = namespace.randMinMax(0, objCanGen) + len;
@@ -139,7 +133,15 @@ window.game = window.game || {};
                     pos: new namespace.Vector(pos.x, pos.y)
                 });
             }
-            console.log('After generate', me.threes.length);
+            if (regenerate) {
+                for (var i = 0; i < me.threes.length; ++i) {
+                    var lifeLong = parseInt(me.threes[i].settings.type ? me.settings.threeLive : me.settings.bushLive);
+                    if (me.threes[i].settings.life + lifeLong <= gamePeriod) {
+                        me.threes.splice(i, 1);
+                        i--;
+                    }
+                }
+            }
         }
 
         function _tick(time) {
@@ -149,14 +151,121 @@ window.game = window.game || {};
             _renderable.swapBuffers();
             if (gamePeriod <= me.settings.maxSteps)
                 requestAnimationFrame(_tick, _renderable.renderCanv);
+            else setTimeout(function () {
+                alert("Game Over!\n" + (me.wolfWin ? 'Wolf' : 'Bunny') + " win!")
+            }, 100);
         }
 
         function _physicProcess(time) {
             if (time - lastAnimationTime > TIME2UPDATE) {
                 gamePeriod++;
                 _generateThrees(true);
+                _moveWolf();
+                _moveBunny();
+                _checkGameState();
                 lastAnimationTime = time;
             }
+        }
+
+        function _checkGameState() {
+            var bunnyPos = me.bunny.getPosition();
+            var wolfPos = me.wolf.getPosition();
+            var vec = bunnyPos.sub(wolfPos);
+            var module = Math.floor(Math.sqrt(Math.pow(vec.x, 2) + Math.pow(vec.y, 2)));
+            if (module == 1) {
+                gamePeriod = me.settings.maxSteps + 1;
+                me.wolfWin = true;
+            }
+        }
+
+        function _getRandomVector() {
+            return new namespace.Vector(namespace.randMinMax(-1, 1), namespace.randMinMax(-1, 1));
+        }
+
+        function _getVectorToBunny() {
+            var bunnyPos = me.bunny.getPosition();
+            var wolfPos = me.wolf.getPosition();
+            var vec = bunnyPos.sub(wolfPos);
+            var module = Math.sqrt(Math.pow(vec.x, 2) + Math.pow(vec.y, 2));
+            return vec.div(new namespace.Vector(module, module));
+        }
+
+        function _getVectorFromWolf() {
+            var bunnyPos = me.bunny.getPosition();
+            var wolfPos = me.wolf.getPosition();
+            var vec = wolfPos.sub(bunnyPos);
+            var module = Math.floor(Math.sqrt(Math.pow(vec.x, 2) + Math.pow(vec.y, 2)));
+            vec = vec.div(new namespace.Vector(module, module));
+            if (me.settings.bunnySmart) {
+                var safeVec = true, rndVec;
+                do {
+                    rndVec = _getRandomVector();
+                    var rndModule = Math.floor(Math.sqrt(Math.pow(rndVec.x, 2) + Math.pow(rndVec.y, 2)));
+                    var rndScalar = rndVec.mul(vec);
+                    rndScalar = rndScalar.x + rndScalar.y;
+                    var cos = rndScalar / (rndModule * module);
+                    if (cos >= 0.25) safeVec = false;
+                } while (!safeVec);
+                return rndVec;
+            } else return _getRandomVector();
+        }
+
+        function _moveBunny() {
+            var vec, x, y, posFree = true;
+            do {
+                vec = _getVectorFromWolf();
+                x = me.bunny.getX() + vec.x * namespace.randMinMax(1, parseInt(me.settings.bunnyStep));
+                y = me.bunny.getY() + vec.y * namespace.randMinMax(1, parseInt(me.settings.bunnyStep));
+                x = Math.max(x, 0);
+                x = Math.min(x, me.settings.cellCount - 1);
+                y = Math.max(y, 0);
+                y = Math.min(y, me.settings.cellCount - 1);
+                posFree = _isXYFree(x, y, 2);
+                // Make offset if not free
+                if (!posFree) {
+                    for (var i = -1; i <= 1; ++i) {
+                        for (var j = -1; j <= 1; ++j) {
+                            x = me.bunny.getX() + i * namespace.randMinMax(1, parseInt(me.settings.bunnyStep));
+                            y = me.bunny.getY() + j * namespace.randMinMax(1, parseInt(me.settings.bunnyStep));
+                            x = Math.max(x, 0);
+                            x = Math.min(x, me.settings.cellCount - 1);
+                            y = Math.max(y, 0);
+                            y = Math.min(y, me.settings.cellCount - 1);
+                            if ((posFree = _isXYFree(x, y, 1))) break;
+                        }
+                    }
+                }
+            } while (!posFree);
+            me.bunny.setPosition(x, y);
+        }
+
+        function _moveWolf() {
+            var vec, x, y, posFree = true;
+            do {
+                vec = _getVectorToBunny();
+                x = me.wolf.getX() + vec.x * namespace.randMinMax(1, parseInt(me.settings.wolfStep));
+                y = me.wolf.getY() + vec.y * namespace.randMinMax(1, parseInt(me.settings.wolfStep));
+                x = Math.max(x, 0);
+                x = Math.min(x, me.settings.cellCount - 1);
+                y = Math.max(y, 0);
+                y = Math.min(y, me.settings.cellCount - 1);
+                posFree = _isXYFree(x, y, 1);
+                // Make offset if not free
+                if (!posFree) {
+                    for (var i = -1; i <= 1; ++i) {
+                        for (var j = -1; j <= 1; ++j) {
+                            x = me.wolf.getX() + i * namespace.randMinMax(1, parseInt(me.settings.wolfStep));
+                            y = me.wolf.getY() + j * namespace.randMinMax(1, parseInt(me.settings.wolfStep));
+                            x = Math.max(x, 0);
+                            x = Math.min(x, me.settings.cellCount - 1);
+                            y = Math.max(y, 0);
+                            y = Math.min(y, me.settings.cellCount - 1);
+                            if ((posFree = _isXYFree(x, y, 1))) break;
+                        }
+                    }
+                }
+            } while (!posFree);
+            me.wolf.setPosition(x, y);
         }
 
         function _drawProcess() {

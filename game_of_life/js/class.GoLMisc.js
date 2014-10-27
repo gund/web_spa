@@ -77,24 +77,16 @@ window.game = window.game || {};
         this.x = x;
         this.y = y;
         this.add = function(vec) {
-            me.x += vec.x;
-            me.y += vec.y;
-            return me;
+            return new Vector(me.x + vec.x, me.y + vec.y);
         };
         this.sub = function(vec) {
-            me.x -= vec.x;
-            me.y -= vec.y;
-            return me;
+            return new Vector(me.x - vec.x, me.y - vec.y);
         };
         this.mul = function(vec) {
-            me.x *= vec.x;
-            me.y *= vec.y;
-            return me;
+            return new Vector(me.x * vec.x, me.y * vec.y);
         };
         this.div = function(vec) {
-            me.x /= vec.x;
-            me.y /= vec.y;
-            return me;
+            return new Vector(Math.round(me.x / vec.x), Math.round(me.y / vec.y));
         };
     }
 

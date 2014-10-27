@@ -54,7 +54,6 @@ window.game = window.game || {};
     function startGame() {
         settings.width = window.innerWidth;
         settings.height = window.innerHeight;
-        console.log('Settings:', settings);
         game = new namespace.GameOfLife(settings);
         switchTo('game');
     }
