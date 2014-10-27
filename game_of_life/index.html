@@ -5,13 +5,44 @@
     <title>Game Of Life</title>
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/class.Renderable.js"></script>
+    <script type="text/javascript" src="js/class.GoLMisc.js"></script>
     <script type="text/javascript" src="js/class.GoL.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
 
 <div id="render-area"></div>
-<div id="ctrl-area"></div>
+<div id="ctrl-area">
+    <h1>Game settings</h1>
+    <label id="cellCount">Grid cell size [<span></span>]:
+        <input type="range" min="10" max="30" value="10">
+    </label>
+    <label id="updatePhysicEvery">Update game loop every [<span></span> second(s)]:
+        <input type="range" min="1" max="10" value="1">
+    </label>
+    <label id="maxSteps">Max Game steps [<span></span>]:
+        <input type="range" min="5" max="50" value="5">
+    </label>
+    <label id="maxThreesBushes">Max Threes and Bushes [<span></span>]:
+        <input type="range" min="1" max="10" value="5">
+    </label>
+    <label id="threeLive">Three max live steps [<span></span>]:
+        <input type="range" min="1" max="50" value="3">
+    </label>
+    <label id="bushLive">Bush max live steps [<span></span>]:
+        <input type="range" min="1" max="50" value="2">
+    </label>
+    <label id="bunnyHideInBush">Bunny can hide in bush [<span></span>]:
+        <input type="checkbox" checked="checked">
+    </label>
+    <label id="wolfStep">Wolf Step [<span></span>]:
+        <input type="range" min="1" max="10" value="1">
+    </label>
+    <label id="bunnyStep">Bunny Step [<span></span>]:
+        <input type="range" min="1" max="10" value="1">
+    </label>
+    <button id="startGame">Start Game</button>
+</div>
 
 </body>
 </html>
