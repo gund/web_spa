@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Issue tracker</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        .bg-danger {
+            background-color: #ff0000;
+        }
+
+        .bg-success {
+            background-color: #00FF00;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Task tracker</h1>
+    <hr/>
+    <input type="text" name="title" data-bind="value: title">
+    <button class="btn btn-primary" data-bind="click: addTask">Add</button>
+
+    <h3>Tasks:</h3>
+    <!-- ko if: tasks().length > 0 -->
+    <label><input type="checkbox" data-bind="checked: hideCompleted"> Hide completed tasks</label>
+    <input type="text" data-bind="value: textFilter, valueUpdate: 'afterkeydown'">
+    <!-- /ko -->
+
+    <h4 data-bind="text: (tasks().length == 0) ? 'No tasks added' : ''"></h4>
+    <ul class="list-group" data-bind="foreach: notCompletedTasks">
+        <li class="list-group-item" data-bind="css: {'bg-success': status(), 'bg-danger': !status()}">
+            <span><input type="checkbox" data-bind="checked: status"></span>
+            <span data-bind="text: $index()+1 + '. ' + title"></span>
+            <span class="badge" style="cursor: pointer" data-bind="click: $parent.removeTask">X</span>
+        </li>
+    </ul>
+</div>
+
+<script src="js/vendor/jquery-2.1.1.min.js"></script>
+<script src="js/vendor/knockout-3.2.0.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
