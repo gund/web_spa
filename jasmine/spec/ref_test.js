@@ -17,40 +17,11 @@ describe("Reformer10", function () {
                 expect(ref10.toReform(1)).toBe('I')
             });
         });
-        describe('toReform: return X', function () {
-            it('10', function () {
-                expect(ref10.toReform(10)).toBe('X')
-            });
-        });
         describe('toReform: return V', function () {
             it('5', function () {
                 expect(ref10.toReform(5)).toBe('V')
             });
         });
-        describe('toReform: return II', function () {
-            it('2', function () {
-                expect(ref10.toReform(2)).toBe('II')
-            });
-        });
-
-        describe('toReform: return III', function () {
-            it('3', function () {
-                expect(ref10.toReform(3)).toBe('III')
-            });
-        });
-
-        describe('toReform: return IV', function () {
-            it('4', function () {
-                expect(ref10.toReform(4)).toBe('IV')
-            });
-        });
-
-        describe('toReform: return IX', function () {
-            it('9', function () {
-                expect(ref10.toReform(9)).toBe('IX')
-            });
-        });
-
         describe('toReform: return VIII', function () {
             it('8', function () {
                 expect(ref10.toReform(8)).toBe('VIII')
@@ -84,12 +55,6 @@ describe("Reformer100", function () {
                 expect(ref100.toReform(50)).toBe('L')
             });
         });
-
-        describe('toReform: return C', function () {
-            it('100', function () {
-                expect(ref100.toReform(100)).toBe('C')
-            });
-        });
         describe('toReform: return XX', function () {
             it('20', function () {
                 expect(ref100.toReform(20)).toBe('XX')
@@ -100,28 +65,6 @@ describe("Reformer100", function () {
                 expect(ref100.toReform(30)).toBe('XXX')
             });
         });
-        describe('toReform: return LXXX', function () {
-            it('80', function () {
-                expect(ref100.toReform(80)).toBe('LXXX')
-            });
-        });
-        describe('toReform: return VX', function () {
-            it('60', function () {
-                expect(ref100.toReform(60)).toBe('LX')
-            });
-        });
-
-        describe('toReform: return XL', function () {
-            it('40', function () {
-                expect(ref100.toReform(40)).toBe('XL')
-            });
-        });
-        describe('toReform: return XC', function () {
-            it('90', function () {
-                expect(ref100.toReform(90)).toBe('XC')
-            });
-        });
-
         describe('toReform: return XXV', function () {
             it('25', function () {
                 expect(ref100.toReform(25)).toBe('XXV')
@@ -135,16 +78,6 @@ describe("Reformer100", function () {
         describe('toReform: return XIX', function () {
             it('19', function () {
                 expect(ref100.toReform(19)).toBe('XIX')
-            });
-        });
-        describe('toReform: return XLIX', function () {
-            it('49', function () {
-                expect(ref100.toReform(49)).toBe('XLIX')
-            });
-        });
-        describe('toReform: return XCVII', function () {
-            it('97', function () {
-                expect(ref100.toReform(97)).toBe('XCVII')
             });
         });
         describe('toReform: return LV', function () {
@@ -175,38 +108,26 @@ describe("Reformer1000", function () {
 
     describe('100<number<1000:', function () {
 
-        describe('toReform: return D', function () {
-            it('500', function () {
-                expect(ref1000.toReform(500)).toBe('D')
-            });
-        });
-        describe('toReform: return M', function () {
-            it('1000', function () {
-                expect(ref1000.toReform(1000)).toBe('M')
-            });
-        });
-
-        describe('toReform: return CC', function () {
-            it('200', function () {
-                expect(ref1000.toReform(200)).toBe('CC')
-            });
-        });
-        describe('toReform: return CCC', function () {
-            it('300', function () {
-                expect(ref1000.toReform(300)).toBe('CCC')
-            });
-        });
-        describe('toReform: return DCCC', function () {
-            it('800', function () {
-                expect(ref1000.toReform(800)).toBe('DCCC')
-            });
-        });
         describe('toReform: return DC', function () {
             it('600', function () {
                 expect(ref1000.toReform(600)).toBe('DC')
             });
         });
-
+        describe('toReform: return CCCLXXV', function () {
+            it('375', function () {
+                expect(ref1000.toReform(375)).toBe('CCCLXXV')
+            });
+        });
+        describe('toReform: return CDXCVII', function () {
+            it('497', function () {
+                expect(ref1000.toReform(497)).toBe('CDXCVII')
+            });
+        });
+        describe('toReform: return CMLXXIX', function () {
+            it('979', function () {
+                expect(ref1000.toReform(979)).toBe('CMLXXIX')
+            });
+        });
         describe('toReform: return CD', function () {
             it('400', function () {
                 expect(ref1000.toReform(400)).toBe('CD')
@@ -217,15 +138,14 @@ describe("Reformer1000", function () {
                 expect(ref1000.toReform(900)).toBe('CM')
             });
         });
-
-        describe('toReform: return CCL', function () {
-            it('250', function () {
-                expect(ref1000.toReform(250)).toBe('CCL')
+        describe('toReform: return D', function () {
+            it('500', function () {
+                expect(ref1000.toReform(500)).toBe('D')
             });
         });
-        describe('toReform: return CCCLXX', function () {
-            it('370', function () {
-                expect(ref1000.toReform(370)).toBe('CCCLXX')
+        describe('toReform: return CC', function () {
+            it('200', function () {
+                expect(ref1000.toReform(200)).toBe('CC')
             });
         });
         describe('toReform: return CXC', function () {
@@ -241,52 +161,6 @@ describe("Reformer1000", function () {
         describe('toReform: return CMLXX', function () {
             it('970', function () {
                 expect(ref1000.toReform(970)).toBe('CMLXX')
-            });
-        });
-        describe('toReform: return DL', function () {
-            it('550', function () {
-                expect(ref1000.toReform(550)).toBe('DL')
-            });
-        });
-        describe('toReform: return DCCCLXX', function () {
-            it('870', function () {
-                expect(ref1000.toReform(870)).toBe('DCCCLXX')
-            });
-        });
-
-        describe('toReform: return CCLII', function () {
-            it('252', function () {
-                expect(ref1000.toReform(252)).toBe('CCLII')
-            });
-        });
-        describe('toReform: return CCCLXXV', function () {
-            it('375', function () {
-                expect(ref1000.toReform(375)).toBe('CCCLXXV')
-            });
-        });
-        describe('toReform: return CXCVIII', function () {
-            it('198', function () {
-                expect(ref1000.toReform(198)).toBe('CXCVIII')
-            });
-        });
-        describe('toReform: return CDXCVII', function () {
-            it('497', function () {
-                expect(ref1000.toReform(497)).toBe('CDXCVII')
-            });
-        });
-        describe('toReform: return CMLXXIX', function () {
-            it('979', function () {
-                expect(ref1000.toReform(979)).toBe('CMLXXIX')
-            });
-        });
-        describe('toReform: return DLIV', function () {
-            it('554', function () {
-                expect(ref1000.toReform(554)).toBe('DLIV')
-            });
-        });
-        describe('toReform: return DCCCLXXIII', function () {
-            it('873', function () {
-                expect(ref1000.toReform(873)).toBe('DCCCLXXIII')
             });
         });
 
@@ -307,37 +181,26 @@ describe("Reformer3000", function () {
 
     describe('1000<number<3000:', function () {
 
-        describe('toReform: return MM', function () {
-            it('2000', function () {
-                expect(ref3000.toReform(2000)).toBe('MM')
-            });
+    });
+    describe('toReform: return MMM', function () {
+        it('3000', function () {
+            expect(ref3000.toReform(3000)).toBe('MMM')
         });
-        describe('toReform: return MMM', function () {
-            it('3000', function () {
-                expect(ref3000.toReform(3000)).toBe('MMM')
-            });
-        });
+    });
 
-        describe('toReform: return MMM', function () {
-            it('3000', function () {
-                expect(ref3000.toReform(3000)).toBe('MMM')
-            });
+    describe('toReform: return MM', function () {
+        it('2000', function () {
+            expect(ref3000.toReform(2000)).toBe('MM')
         });
+    });
 
+    describe('toReform: return MMXVI', function () {
+        it('2016', function () {
+            expect(ref3000.toReform(2016)).toBe('MMXVI')
+        });
         describe('toReform: return MMXIV', function () {
             it('2014', function () {
                 expect(ref3000.toReform(2014)).toBe('MMXIV')
-            });
-        });
-        describe('toReform: return MCMXXVI', function () {
-            it('1926', function () {
-                expect(ref3000.toReform(1926)).toBe('MCMXXVI')
-            });
-        });
-
-        describe('toReform: return MMXVI', function () {
-            it('2016', function () {
-                expect(ref3000.toReform(2016)).toBe('MMXVI')
             });
         });
 
