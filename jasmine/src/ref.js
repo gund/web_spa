@@ -1,4 +1,4 @@
-var reformer10 = {
+var ref10 = {
     one: 'I',
     five: 'V',
     ten: 'X',
@@ -22,7 +22,7 @@ var reformer10 = {
                     if (1 < n && n < 4) {
                         return (function () {
                             var summat = '', i = 0;
-                            for (i; i < n; i++) summat += reformer10.one;
+                            for (i; i < n; i++) summat += ref10.one;
                             return summat;
                         })();
                     }
@@ -32,15 +32,15 @@ var reformer10 = {
                                 var summatmat = '';
                                 var four = 5 - parseInt(n);
                                 var nine = 10 - parseInt(n);
-                                if (four == 1) summatmat = reformer10.one + reformer10.five;
-                                if (nine == 1) summatmat = reformer10.one + reformer10.ten;
+                                if (four == 1) summatmat = ref10.one + ref10.five;
+                                if (nine == 1) summatmat = ref10.one + ref10.ten;
                                 return summatmat;
                             })();
                         } else {
                             return (function () {
-                                var summatmat = reformer10.five, i = 0;
+                                var summatmat = ref10.five, i = 0;
                                 var countTosummat = parseInt(n) - 5;
-                                for (i; i < countTosummat; i++) summatmat += reformer10.one;
+                                for (i; i < countTosummat; i++) summatmat += ref10.one;
                                 return summatmat;
                             })();
                         }
@@ -51,7 +51,7 @@ var reformer10 = {
     }
 };
 
-var reformer100 = {
+var ref100 = {
     one: 'I',
     five: 'V',
     ten: 'X',
@@ -74,7 +74,7 @@ var reformer100 = {
                             return (function () {
                                 var summatmat = '', i = 0;
                                 var countSum = n / 10;
-                                for (i; i < countSum; i++) summatmat += reformer100.ten;
+                                for (i; i < countSum; i++) summatmat += ref100.ten;
                                 return summatmat;
                             })();
                         }
@@ -84,15 +84,15 @@ var reformer100 = {
                                     var summatmat = '';
                                     var four = 50 - parseInt(n);
                                     var nine = 100 - parseInt(n);
-                                    if (four == 10) summatmat = reformer100.ten + reformer100.fifty;
-                                    if (nine == 10) summatmat = reformer100.ten + reformer100.hundred;
+                                    if (four == 10) summatmat = ref100.ten + ref100.fifty;
+                                    if (nine == 10) summatmat = ref100.ten + ref100.hundred;
                                     return summatmat;
                                 })();
                             } else {
                                 return (function () {
-                                    var summatmat = reformer100.fifty, i = 0;
+                                    var summatmat = ref100.fifty, i = 0;
                                     var summatmCount = (n - 50) / 10;
-                                    for (i; i < summatmCount; i++) summatmat += reformer100.ten;
+                                    for (i; i < summatmCount; i++) summatmat += ref100.ten;
                                     return summatmat;
                                 })();
                             }
@@ -104,8 +104,8 @@ var reformer100 = {
                         if (10 < n && n < 40) {
                             return (function () {
                                 var summatmat = '', i = 0;
-                                for (i; i < countSumInt; i++) summatmat += reformer100.ten;
-                                return summatmat + reformer10.toReform(countSumFloat);
+                                for (i; i < countSumInt; i++) summatmat += ref100.ten;
+                                return summatmat + ref10.toReform(countSumFloat);
                             })();
                         }
                         if (n > 40) {
@@ -115,21 +115,21 @@ var reformer100 = {
                                     var forty = 50 - parseInt(n);
                                     var ninth = 100 - parseInt(n);
                                     if (forty < 10)
-                                        summatmat = (reformer100.ten + reformer100.fifty) + reformer10.toReform(countSumFloat);
+                                        summatmat = (ref100.ten + ref100.fifty) + ref10.toReform(countSumFloat);
                                     if (ninth < 10)
-                                        summatmat = (reformer100.ten + reformer100.hundred) + reformer10.toReform(countSumFloat);
+                                        summatmat = (ref100.ten + ref100.hundred) + ref10.toReform(countSumFloat);
                                     return summatmat;
                                 })();
                             } else {
                                 return (function () {
-                                    var summatmat = reformer100.fifty, i = 0;
+                                    var summatmat = ref100.fifty, i = 0;
                                     var countSumFifty = (n - 50) / 10;
                                     var countSumIntFifty = Math.floor(countSumFifty);
                                     var countSumFloatFifty = Math.round((countSumFifty - Math.floor(countSumFifty)) * 10);
                                     for (i; i < countSumIntFifty; i++) {
-                                        summatmat += reformer100.ten;
+                                        summatmat += ref100.ten;
                                     }
-                                    return summatmat + reformer10.toReform(countSumFloatFifty);
+                                    return summatmat + ref10.toReform(countSumFloatFifty);
                                 })();
                             }
                         }
@@ -140,7 +140,7 @@ var reformer100 = {
     }
 };
 
-var reformer1000 = {
+var ref1000 = {
     one: 'I',
     five: 'V',
     ten: 'X',
@@ -163,7 +163,7 @@ var reformer1000 = {
                             return (function () {
                                 var summatmat = '', i = 0;
                                 var countSum = n / 100;
-                                for (i; i < countSum; i++) summatmat += reformer1000.hundred;
+                                for (i; i < countSum; i++) summatmat += ref1000.hundred;
                                 return summatmat;
                             })();
                         }
@@ -173,15 +173,15 @@ var reformer1000 = {
                                     var summat = '';
                                     var four = 500 - parseInt(n);
                                     var nine = 1000 - parseInt(n);
-                                    if (four == 100) summat = reformer1000.hundred + reformer100.fiveHundred;
-                                    if (nine == 100) summat = reformer1000.hundred + reformer100.thousand;
+                                    if (four == 100) summat = ref1000.hundred + ref100.fiveHundred;
+                                    if (nine == 100) summat = ref1000.hundred + ref100.thousand;
                                     return summat;
                                 })();
                             } else {
                                 return (function () {
-                                    var summat = reformer1000.fiveHundred, i = 0;
+                                    var summat = ref1000.fiveHundred, i = 0;
                                     var countSum = (n - 500) / 100;
-                                    for (i; i < countSum; i++) summat += reformer1000.hundred;
+                                    for (i; i < countSum; i++) summat += ref1000.hundred;
                                     return summat;
                                 })();
                             }
@@ -193,8 +193,8 @@ var reformer1000 = {
                         if (100 < n && n < 400) {
                             return (function () {
                                 var summat = '', i = 0;
-                                for (i; i < countSumInt; i++) summat += reformer1000.hundred;
-                                return summat + reformer100.toReform(countSumFloat);
+                                for (i; i < countSumInt; i++) summat += ref1000.hundred;
+                                return summat + ref100.toReform(countSumFloat);
                             })();
                         }
                         if (n > 400) {
@@ -204,19 +204,19 @@ var reformer1000 = {
                                     var forty = 500 - parseInt(n);
                                     var ninth = 1000 - parseInt(n);
                                     if (forty < 100)
-                                        summat = (reformer1000.hundred + reformer1000.fiveHundred) + reformer100.toReform(countSumFloat);
+                                        summat = (ref1000.hundred + ref1000.fiveHundred) + ref100.toReform(countSumFloat);
                                     if (ninth < 100)
-                                        summat = (reformer1000.hundred + reformer1000.thousand) + reformer100.toReform(countSumFloat);
+                                        summat = (ref1000.hundred + ref1000.thousand) + ref100.toReform(countSumFloat);
                                     return summat;
                                 })();
                             } else {
                                 return (function () {
-                                    var summat = reformer1000.fiveHundred, i = 0;
+                                    var summat = ref1000.fiveHundred, i = 0;
                                     var countSumFifty = (n - 500) / 100;
                                     var countSumIntFifty = Math.floor(countSumFifty);
                                     var countSumFloatFifty = Math.round((countSumFifty - Math.floor(countSumFifty)) * 100);
-                                    for (i; i < countSumIntFifty; i++) summat += reformer1000.hundred;
-                                    return summat + reformer100.toReform(countSumFloatFifty);
+                                    for (i; i < countSumIntFifty; i++) summat += ref1000.hundred;
+                                    return summat + ref100.toReform(countSumFloatFifty);
                                 })();
                             }
                         }
@@ -227,7 +227,7 @@ var reformer1000 = {
     }
 };
 
-var reformer3000 = {
+var ref3000 = {
     one: 'I',
     five: 'V',
     ten: 'X',
@@ -241,7 +241,7 @@ var reformer3000 = {
                 return (function () {
                     var summat = '', i = 0;
                     var countSum = n / 1000;
-                    for (i; i < countSum; i++) summat += reformer3000.thousand;
+                    for (i; i < countSum; i++) summat += ref3000.thousand;
                     return summat;
                 })();
             } else {
@@ -250,9 +250,9 @@ var reformer3000 = {
                 var countSumFloat = Math.round((countSum - Math.floor(countSum)) * 1000);
                 return (function () {
                     var summat = '', i = 0, final_summat;
-                    for (i; i < countSumInt; i++) summat += reformer3000.thousand;
-                    if (countSumFloat < 100) final_summat = summat + reformer100.toReform(countSumFloat);
-                    else final_summat = summat + reformer1000.toReform(countSumFloat);
+                    for (i; i < countSumInt; i++) summat += ref3000.thousand;
+                    if (countSumFloat < 100) final_summat = summat + ref100.toReform(countSumFloat);
+                    else final_summat = summat + ref1000.toReform(countSumFloat);
                     return final_summat;
                 })();
             }
