@@ -1,0 +1,21 @@
+{
+  "name": "web_spa",
+  "version": "0.1.0",
+  "homepage": "https://github.com/gund/web_spa",
+  "authors": [
+    "Alex Malkevich <malkevich.alex@gmail.com>"
+  ],
+  "description": "Web spa",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ]
+}
