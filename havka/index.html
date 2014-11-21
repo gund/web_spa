@@ -17,10 +17,94 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <h2>Компонуй еду!</h2>
-            <hr>
+            <div class="page-header"><h1>Компонуй еду!</h1></div>
         </div>
     </div>
+
+    <!-- Top Filter -->
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Ограничения</h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="proteins">Макс. белков:</label>
+                            <input id="proteins" type="number" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="fats">Макс. жиров:</label>
+                            <input id="fats" type="number" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="carbohydrates">Макс. углеводов:</label>
+                            <input id="carbohydrates" type="number" class="form-control">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Еда на день</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4">
+                            <h4>Завтрак</h4>
+                            <ul class="list-group" data-bind="foreach: mealsBreakfast">
+                                <li class="list-group-item">
+                                    <a href="#" class="badge"
+                                       data-bind="click: $parent.removeMealFrom.bind($data, 0)">x</a>
+                                    <span data-bind="text: name"></span>
+                                </li>
+                            </ul>
+                            <!-- ko if: mealsBreakfast().length == 0 -->
+                            Не выбрано
+                            <!-- /ko -->
+                        </div>
+                        <div class="col-xs-4 col-sm-4">
+                            <h4>Обед</h4>
+                            <ul class="list-group" data-bind="foreach: mealsLunch">
+                                <li class="list-group-item">
+                                    <a href="#" class="badge"
+                                       data-bind="click: $parent.removeMealFrom.bind($data, 1)">x</a>
+                                    <span data-bind="text: name"></span>
+                                </li>
+                            </ul>
+                            <!-- ko if: mealsLunch().length == 0 -->
+                            Не выбрано
+                            <!-- /ko -->
+                        </div>
+                        <div class="col-xs-4 col-sm-4">
+                            <h4>Ужин</h4>
+                            <ul class="list-group" data-bind="foreach: mealsDinner">
+                                <li class="list-group-item">
+                                    <a href="#" class="badge"
+                                       data-bind="click: $parent.removeMealFrom.bind($data, 2)">x</a>
+                                    <span data-bind="text: name"></span>
+                                </li>
+                            </ul>
+                            <!-- ko if: mealsDinner().length == 0 -->
+                            Не выбрано
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    Всего:
+                    <span data-bind="text: getAllProteins"></span> жиров,
+                    <span data-bind="text: getAllFats"></span> белков,
+                    <span data-bind="text: getAllCarbohydrates"></span> углеводов,
+                    <span data-bind="text: getAllKCal"></span> Ккал
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Top Filter -->
 
     <div class="row">
         <!-- Left Sidebar -->
@@ -84,7 +168,21 @@
                         </div>
 
                         <div class="media-bottom">
-                            Категория: <span data-bind="text: category"></span>
+                            <div class="btn-block">
+                                Категория: <span data-bind="text: category"></span>
+                                <button class="btn btn-default"
+                                        data-bind="click: $parent.addMealFor.bind($data, 0)">
+                                    К Завтраку
+                                </button>
+                                <button class="btn btn-default"
+                                        data-bind="click: $parent.addMealFor.bind($data, 1)">
+                                    К Обеду
+                                </button>
+                                <button class="btn btn-default"
+                                        data-bind="click: $parent.addMealFor.bind($data, 2)">
+                                    К Ужину
+                                </button>
+                            </div>
                         </div>
                     </li>
                 </div>

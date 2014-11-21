@@ -9,6 +9,9 @@ window.havka = window.havka || {};
 
     var viewModel = {
         meals: ko.observableArray([]),
+        mealsBreakfast: ko.observableArray([]),
+        mealsLunch: ko.observableArray([]),
+        mealsDinner: ko.observableArray([]),
         categories: ko.observableArray([]),
         ingredients: ko.observableArray([]),
         showCategories: ko.observable(true),
@@ -17,10 +20,36 @@ window.havka = window.havka || {};
         },
         toggleActiveItem: function (item) {
             item.active(!item.active());
+        },
+        addMealFor: function(dayTime) {
+            switch (dayTime) {
+                case 0:
+                    viewModel.mealsBreakfast.push(this);
+                    break;
+                case 1:
+                    viewModel.mealsLunch.push(this);
+                    break;
+                case 2:
+                    viewModel.mealsDinner.push(this);
+                    break;
+            }
+        },
+        removeMealFrom: function(dayTime) {
+            switch (dayTime) {
+                case 0:
+                    viewModel.mealsBreakfast.remove(this);
+                    break;
+                case 1:
+                    viewModel.mealsLunch.remove(this);
+                    break;
+                case 2:
+                    viewModel.mealsDinner.remove(this);
+                    break;
+            }
         }
     };
+
     viewModel.filteredMeals = ko.computed(function () {
-        "use strict";
         var meals = [];
         var activeCategories = [], activeIngredients = [];
 
@@ -46,6 +75,59 @@ window.havka = window.havka || {};
         });
 
         return meals;
+    });
+
+    viewModel.getAllProteins = ko.computed(function() {
+        var proteins = 0;
+        viewModel.mealsBreakfast().forEach(function(meal) {
+            proteins += parseFloat(meal.proteins);
+        });
+        viewModel.mealsLunch().forEach(function(meal) {
+            proteins += parseFloat(meal.proteins);
+        });
+        viewModel.mealsDinner().forEach(function(meal) {
+            proteins += parseFloat(meal.proteins);
+        });
+        return proteins.toPrecision(3);
+    });
+    viewModel.getAllFats = ko.computed(function() {
+        var fats = 0;
+        viewModel.mealsBreakfast().forEach(function(meal) {
+            fats += parseFloat(meal.fats);
+        });
+        viewModel.mealsLunch().forEach(function(meal) {
+            fats += parseFloat(meal.fats);
+        });
+        viewModel.mealsDinner().forEach(function(meal) {
+            fats += parseFloat(meal.fats);
+        });
+        return fats.toPrecision(3);
+    });
+    viewModel.getAllCarbohydrates = ko.computed(function() {
+        var carbohydrates = 0;
+        viewModel.mealsBreakfast().forEach(function(meal) {
+            carbohydrates += parseFloat(meal.carbohydrates);
+        });
+        viewModel.mealsLunch().forEach(function(meal) {
+            carbohydrates += parseFloat(meal.carbohydrates);
+        });
+        viewModel.mealsDinner().forEach(function(meal) {
+            carbohydrates += parseFloat(meal.carbohydrates);
+        });
+        return carbohydrates.toPrecision(3);
+    });
+    viewModel.getAllKCal = ko.computed(function() {
+        var kcal = 0;
+        viewModel.mealsBreakfast().forEach(function(meal) {
+            kcal += parseFloat(meal.kcal);
+        });
+        viewModel.mealsLunch().forEach(function(meal) {
+            kcal += parseFloat(meal.kcal);
+        });
+        viewModel.mealsDinner().forEach(function(meal) {
+            kcal += parseFloat(meal.kcal);
+        });
+        return kcal.toPrecision(3);
     });
 
     function loadDbData() {
