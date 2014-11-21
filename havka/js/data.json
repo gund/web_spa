@@ -1,6 +1,6 @@
-var dishes = [
+[
                 { "name": "Борщ",
-                  "src": "img/borsch.jpg",
+                  "src": "images/borsch.jpg",
                   "category": "Первые блюда",
                   "ingredients": "Мясо, картофель, капуста, свекла, сметана, пюре томатное, лук, масло сливочное", 
                   "kcal": "57.7", 
@@ -11,7 +11,7 @@ var dishes = [
                 },
                 {
                   "name": "Гороховый суп",
-                  "src": "img/gorohovuj_syp.jpg",
+                  "src": "images/gorohovuj_syp.jpg",
                   "category": "Первые блюда",
                   "ingredients": "Куриное мясо, копчености, картофель, морковь, лук, лавровый лист, соль, горох дробленный", 
                   "kcal": "60.3", 
@@ -22,7 +22,7 @@ var dishes = [
                 },
                 {
                   "name": "Окрошка кефирная",
-                  "src": "img/okroshka.jpg",
+                  "src": "images/okroshka.jpg",
                   "category": "Первые блюда",
                   "ingredients": "Картофель, лук зеленый, укроп, петрушка, яйцо куриное, огурцы, редис, кефир, ветчина, соль", 
                   "kcal": "47", 
@@ -33,7 +33,7 @@ var dishes = [
                 },
                 {
                   "name": "Грибной крем-суп",
-                  "src": "img/gribnoj_syp.jpg",
+                  "src": "images/gribnoj_syp.jpg",
                   "category": "Первые блюда",
                   "ingredients": "Шампиньоны, сливки 25%-ные, масло сливочное, мука пшеничная, тимьян, чеснок, соль, перец черный свежемолотый, грибы белые сушеные", 
                   "kcal": "26", 
@@ -44,7 +44,7 @@ var dishes = [
                 },
                 {
                   "name": "Солянка мясная",
-                  "src": "img/soljanka.jpg",
+                  "src": "images/soljanka.jpg",
                   "category": "Первые блюда",
                   "ingredients": "Мясо говяжье, сосиски, колбаса вареная, огурцы соленые, ветчина, лук репчатый, петрушка, паста томатная, маслины", 
                   "kcal": "100", 
@@ -55,7 +55,7 @@ var dishes = [
                 },
                 {
                   "name": "Овощное рагу с курицей",
-                  "src": "img/ragy_kyrica.jpg",
+                  "src": "images/ragy_kyrica.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Мясо(филе) куриное, лук репчатый, морковь, капуста цветная, зеленый горошек, кукуруза консервированная, сметана, соль, перец красный свежий, масло растительное, сельдерей", 
                   "kcal": "99", 
@@ -66,7 +66,7 @@ var dishes = [
                 },
                 {
                   "name": "Плов с курицей",
-                  "src": "img/plov.jpg",
+                  "src": "images/plov.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Рис, мясо(филе) куриное, лук репчатый, морковь, приправа для плова, соль, перец черный молотый", 
                   "kcal": "150.7", 
@@ -77,7 +77,7 @@ var dishes = [
                 },
                 {
                   "name": "Гречневая каша",
-                  "src": "img/grechnevaya_kasha.jpg",
+                  "src": "images/grechnevaya_kasha.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Гречневая каша, соль, масло сливочное", 
                   "kcal": "132", 
@@ -88,7 +88,7 @@ var dishes = [
                 },
                 {
                   "name": "Рис отварной",
-                  "src": "img/ris.jpg",
+                  "src": "images/ris.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Рис, соль, масло сливочное", 
                   "kcal": "147", 
@@ -99,7 +99,7 @@ var dishes = [
                 },
                 {
                   "name": "Макароны",
-                  "src": "img/makaronu.jpg",
+                  "src": "images/makaronu.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Макароны, соль, масло сливочное", 
                   "kcal": "320", 
@@ -110,7 +110,7 @@ var dishes = [
                 },
                 {
                   "name": "Котлеты куриные",
-                  "src": "img/kotletu.jpg",
+                  "src": "images/kotletu.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Куриный фарш(куриное мясо, куриное яйцо, зеленый лук, укроп), соль, перец черный, сухари панировочные", 
                   "kcal": "260", 
@@ -121,7 +121,7 @@ var dishes = [
                 },
                 {
                   "name": "Свиные отбивные",
-                  "src": "img/otbivnue.jpg",
+                  "src": "images/otbivnue.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Свинина(мясо шейного отдела), мука, яйцо куриное, соль, перец черный", 
                   "kcal": "462", 
@@ -132,7 +132,7 @@ var dishes = [
                 },
                 {
                   "name": "Вареники с картофелем и грибами",
-                  "src": "img/vareniki.jpg",
+                  "src": "images/vareniki.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Пресное тесто, картофель, грибы, укроп, соль, лук репчатые, сало, сметана", 
                   "kcal": "231", 
@@ -143,7 +143,7 @@ var dishes = [
                 },
                 {
                   "name": "Пельмени",
-                  "src": "img/pelmeni.jpg",
+                  "src": "images/pelmeni.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Пресное тесто, свиной фарш(свиное мясо, сало, лук репчатый), черный молотый перец", 
                   "kcal": "275", 
@@ -154,7 +154,7 @@ var dishes = [
                 },
                 {
                   "name": "Куриние грудки",
-                  "src": "img/grydki.jpg",
+                  "src": "images/grydki.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Куриное мясо(грудки), масло растительное, укроп, петрушка, куркума", 
                   "kcal": "113", 
@@ -165,7 +165,7 @@ var dishes = [
                 },
                 {
                   "name": "Овсяная каша с фруктами",
-                  "src": "img/ovsjanka.jpg",
+                  "src": "images/ovsjanka.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Каша овсяная, мед, смородина, грецкие орехи, банан", 
                   "kcal": "152", 
@@ -176,7 +176,7 @@ var dishes = [
                 },
                 {
                   "name": "Картофельное пюре",
-                  "src": "img/pjyre.jpg",
+                  "src": "images/pjyre.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Картофель, молоко, сливочное масло", 
                   "kcal": "92", 
@@ -187,7 +187,7 @@ var dishes = [
                 },
                 {
                   "name": "Манная каша",
-                  "src": "img/manka.jpg",
+                  "src": "images/manka.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Манная каша, ягоды или варенье, мед", 
                   "kcal": "98", 
@@ -198,7 +198,7 @@ var dishes = [
                 },
                 {
                   "name": "Яичница глазунья",
-                  "src": "img/jaichnica.jpg",
+                  "src": "images/jaichnica.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Яйцо куриное, соль, масло растительное, свежая зелень", 
                   "kcal": "240", 
@@ -209,7 +209,7 @@ var dishes = [
                 },
                 {
                   "name": "Вареные яйца",
-                  "src": "img/vkrytyjy.jpg",
+                  "src": "images/vkrytyjy.jpg",
                   "category": "Основные блюда",
                   "ingredients": "Яйцо куриное, майонез, свежая зелень", 
                   "kcal": "158.7", 
@@ -220,7 +220,7 @@ var dishes = [
                 },
                 {
                   "name": "Греческий салат",
-                  "src": "img/grecheskij_salat.jpg",
+                  "src": "images/grecheskij_salat.jpg",
                   "category": "Салаты",
                   "ingredients": "Помидоры, лук красный, огурцы, перец зеленый стручковый, сыр фета, маслины без косточек, сок лимонный, масло оливковое, перец черный свежемолотый", 
                   "kcal": "160", 
@@ -231,7 +231,7 @@ var dishes = [
                 },
                 {
                   "name": "Оливье",
-                  "src": "img/olivje.jpg",
+                  "src": "images/olivje.jpg",
                   "category": "Салаты",
                   "ingredients": "Картофель, морковь, огурцы маринованные, заеленый горошек, яйцо куриное, колбаса докторская, сметана, майонез, соль", 
                   "kcal": "305", 
@@ -242,7 +242,7 @@ var dishes = [
                 },
                 {
                   "name": "Шуба",
-                  "src": "img/shyba.jpg",
+                  "src": "images/shyba.jpg",
                   "category": "Салаты",
                   "ingredients": "Лук репчатый, сельдь, картофель, свекла, морковь, майонез", 
                   "kcal": "271", 
@@ -253,7 +253,7 @@ var dishes = [
                 },
                 {
                   "name": "Овощной салат",
-                  "src": "img/ovoschnoj.jpg",
+                  "src": "images/ovoschnoj.jpg",
                   "category": "Салаты",
                   "ingredients": "Перец болгарский, капуста белокачанная, помидоры, огурцы, зеленый лук, укроп, петрушка, масло оливковое", 
                   "kcal": "65", 
@@ -264,7 +264,7 @@ var dishes = [
                 },
                 {
                   "name": "Винегрет",
-                  "src": "img/vinegret.jpg",
+                  "src": "images/vinegret.jpg",
                   "category": "Салаты",
                   "ingredients": "Картофель, свекла, огурцы соленые, морковь, лук репчатый, уксус, сахар, соль, перец черный молотоый", 
                   "kcal": "122", 
@@ -275,7 +275,7 @@ var dishes = [
                 },
                 {
                   "name": "Шарлотка",
-                  "src": "img/sharlotka.jpg",
+                  "src": "images/sharlotka.jpg",
                   "category": "Десерты и Выпечка",
                   "ingredients": "Сахар, яйцо куриное, мука пшеничная, яблоки, сода, масло растительное", 
                   "kcal": "197.7", 
@@ -286,7 +286,7 @@ var dishes = [
                 },
                 {
                   "name": "Кекс творожный",
-                  "src": "img/keks_tvorozhnuj.jpg",
+                  "src": "images/keks_tvorozhnuj.jpg",
                   "category": "Десерты и Выпечка",
                   "ingredients": "Творог, сметана, яйцо куриное, масло сливочное, мука пшеничная, сахар, сода", 
                   "kcal": "384", 
@@ -297,7 +297,7 @@ var dishes = [
                 },
                 {
                   "name": "Блинчики с джемом",
-                  "src": "img/blinu.jpg",
+                  "src": "images/blinu.jpg",
                   "category": "Десерты и Выпечка",
                   "ingredients": "Мука пшеничная, сахар, яйцо куриное, молоко, соль, масло растительное, джем", 
                   "kcal": "232.5", 
@@ -308,7 +308,7 @@ var dishes = [
                 },
                 {
                   "name": "Маффины",
-                  "src": "img/maffinu.jpg",
+                  "src": "images/maffinu.jpg",
                   "category": "Десерты и Выпечка",
                   "ingredients": "Сахар, яйцо куриное, масло сливочное, сметана, сода, мука пшеничная, орехи грецкие, изюм светлый, пудра сахарная", 
                   "kcal": "480", 
@@ -319,7 +319,7 @@ var dishes = [
                 },
                 {
                   "name": "Овсяное печенье",
-                  "src": "img/ovsjanoe_pechenje.jpg",
+                  "src": "images/ovsjanoe_pechenje.jpg",
                   "category": "Десерты и Выпечка",
                   "ingredients": "Сахар, яйцо куриное, мука пшеничная, корица молотая, ванилин, сухофрукты, шоколад, масло сливочное, хлопья овсяные", 
                   "kcal": "434", 
@@ -330,7 +330,7 @@ var dishes = [
                 },
                 {
                   "name": "Яблочный штрудель",
-                  "src": "img/shtrydel.jpg",
+                  "src": "images/shtrydel.jpg",
                   "category": "Десерты и Выпечка",
                   "ingredients": "Яблоки, тесто слоеное, сахар, масло сливочное, корица, изюм, миндаль", 
                   "kcal": "274", 
@@ -341,7 +341,7 @@ var dishes = [
                 },
                 {
                   "name": "Запеканка",
-                  "src": "img/zapekanka.jpg",
+                  "src": "images/zapekanka.jpg",
                   "category": "Десерты и Выпечка",
                   "ingredients": "Сливки, сахар, яйцо куриное, мука пшеничная, творог, масло сливочное, ванилин, изюм", 
                   "kcal": "239", 
@@ -352,7 +352,7 @@ var dishes = [
                 },
                 {
                   "name": "Компот из груш",
-                  "src": "img/kompot_gryshi.jpg",
+                  "src": "images/kompot_gryshi.jpg",
                   "category": "Напитки",
                   "ingredients": "Вода, сахар, груши", 
                   "kcal": "74", 
@@ -363,7 +363,7 @@ var dishes = [
                 },
                 {
                   "name": "Компот из абрикосов",
-                  "src": "img/kompot_abrikosu.jpg",
+                  "src": "images/kompot_abrikosu.jpg",
                   "category": "Напитки",
                   "ingredients": "Вода, сахар, абрикосы", 
                   "kcal": "89", 
@@ -374,7 +374,7 @@ var dishes = [
                 },
                 {
                   "name": "Узвар",
-                  "src": "img/yzvar.jpg",
+                  "src": "images/yzvar.jpg",
                   "category": "Напитки",
                   "ingredients": "Вода, сахар, яблоко сушеное, сливы сушеные, изюм", 
                   "kcal": "33.94", 
@@ -385,7 +385,7 @@ var dishes = [
                 },
                 {
                   "name": "Кофе",
-                  "src": "img/kofe.jpg",
+                  "src": "images/kofe.jpg",
                   "category": "Напитки",
                   "ingredients": "Кофе, вода, сахар, сливки", 
                   "kcal": "58", 

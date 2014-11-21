@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Компонуй еду!</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="js/vendor/jquery-2.1.1.min.js"></script>
+    <script src="js/vendor/knockout-3.2.0.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/Meal.js"></script>
+    <script src="js/Category.js"></script>
+    <script src="js/Ingredient.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Компонуй еду!</h2>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Left Sidebar -->
+        <div class="col-sm-3" style="margin-top: 15px">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation"
+                    data-bind="css: {active: showCategories()}, click: switchCategories.bind($data, true)">
+                    <a href="javascript://void(0)">Категории</a>
+                </li>
+                <li role="presentation"
+                    data-bind="css: {active: !showCategories()}, click: switchCategories.bind($data, false)">
+                    <a href="javascript://void(0)">Ингредиенты</a>
+                </li>
+            </ul>
+            <hr>
+            <div class="sidebar-left">
+                <div class="list-group" data-bind="foreach: showCategories()?categories:ingredients">
+                    <a class="list-group-item" href="#"
+                       data-bind="css: {active: active}, click: $parent.toggleActiveItem">
+                        <span class="badge" data-bind="text: count"></span>
+                        <span data-bind="text: name"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Left Sidebar -->
+
+        <!-- Content -->
+        <div class="col-sm-9">
+            <h3>Список блюд <span class="label label-default" data-bind="text: filteredMeals().length"></span></h3>
+            <hr>
+            <!-- ko if: filteredMeals().length > 0 -->
+            <ul class="media-list" data-bind="foreach: filteredMeals">
+                <div class="well">
+                    <li class="media">
+                        <a class="media-left media-middle" href="javascript://void(0)">
+                            <img src="" data-bind="attr: {src: src}">
+                        </a>
+
+                        <div class="media-body">
+                            <h4 class="media-heading" data-bind="text: name"></h4>
+
+                            <div class="list-group">
+                                <a href="javascript://void(0)" class="list-group-item">
+                                    <h4 class="list-group-item-heading">Ингредиенты</h4>
+
+                                    <p class="list-group-item-text" data-bind="text: ingredients"></p>
+                                </a>
+                                <a href="javascript://void(0)" class="list-group-item">
+                                    <strong class="list-group-item-heading">Пищевая ценность</strong>
+
+                                    <p class="list-group-item-text">
+                                        <span data-bind="text: kcal"></span> Ккал,
+                                        Белки: <span data-bind="text: proteins"></span>гр,
+                                        Жиры: <span data-bind="text: fats"></span>гр,
+                                        Углеводы: <span data-bind="text: carbohydrates"></span>гр,
+                                        Вес: <span data-bind="text: weight"></span>гр
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="media-bottom">
+                            Категория: <span data-bind="text: category"></span>
+                        </div>
+                    </li>
+                </div>
+            </ul>
+            <!-- /ko -->
+            <!-- ko ifnot: filteredMeals().length > 0 -->
+            <h4>Нет блюд =(</h4>
+            <!-- /ko -->
+        </div>
+        <!-- Content -->
+    </div>
+
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
