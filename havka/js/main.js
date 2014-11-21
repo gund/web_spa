@@ -15,13 +15,41 @@ window.havka = window.havka || {};
         categories: ko.observableArray([]),
         ingredients: ko.observableArray([]),
         showCategories: ko.observable(true),
+        maxProteins: ko.observable(0),
+        maxFats: ko.observable(0),
+        maxCarbohydrates: ko.observable(0),
+        maxKCal: ko.observable(0),
         switchCategories: function (show) {
             viewModel.showCategories(show);
         },
         toggleActiveItem: function (item) {
             item.active(!item.active());
         },
-        addMealFor: function(dayTime) {
+        addMealFor: function (dayTime) {
+            var maxProteins = parseFloat(viewModel.maxProteins());
+            var maxFats = parseFloat(viewModel.maxFats());
+            var maxCarbohydrates = parseFloat(viewModel.maxCarbohydrates());
+            var maxKCal = parseFloat(viewModel.maxKCal());
+            var allProteins = parseFloat(viewModel.getAllProteins());
+            var allFats = parseFloat(viewModel.getAllFats());
+            var allCarbohydrates = parseFloat(viewModel.getAllCarbohydrates());
+            var allKCal = parseFloat(viewModel.getAllKCal());
+            if (maxProteins > 0 && allProteins + parseFloat(this.proteins) > maxProteins) {
+                alert("Достигнут лимит белков!");
+                return;
+            }
+            if (maxFats > 0 && allFats + parseFloat(this.fats) > maxFats) {
+                alert("Достигнут лимит жиров!");
+                return;
+            }
+            if (maxCarbohydrates > 0 && allCarbohydrates + parseFloat(this.carbohydrates) > maxCarbohydrates) {
+                alert("Достигнут лимит углеводов!");
+                return;
+            }
+            if (maxKCal > 0 && allKCal + parseFloat(this.kcal) > maxKCal) {
+                alert("Достигнут лимит каллорий!");
+                return;
+            }
             switch (dayTime) {
                 case 0:
                     viewModel.mealsBreakfast.push(this);
@@ -34,7 +62,7 @@ window.havka = window.havka || {};
                     break;
             }
         },
-        removeMealFrom: function(dayTime) {
+        removeMealFrom: function (dayTime) {
             switch (dayTime) {
                 case 0:
                     viewModel.mealsBreakfast.remove(this);
@@ -77,54 +105,54 @@ window.havka = window.havka || {};
         return meals;
     });
 
-    viewModel.getAllProteins = ko.computed(function() {
+    viewModel.getAllProteins = ko.computed(function () {
         var proteins = 0;
-        viewModel.mealsBreakfast().forEach(function(meal) {
+        viewModel.mealsBreakfast().forEach(function (meal) {
             proteins += parseFloat(meal.proteins);
         });
-        viewModel.mealsLunch().forEach(function(meal) {
+        viewModel.mealsLunch().forEach(function (meal) {
             proteins += parseFloat(meal.proteins);
         });
-        viewModel.mealsDinner().forEach(function(meal) {
+        viewModel.mealsDinner().forEach(function (meal) {
             proteins += parseFloat(meal.proteins);
         });
         return proteins.toPrecision(3);
     });
-    viewModel.getAllFats = ko.computed(function() {
+    viewModel.getAllFats = ko.computed(function () {
         var fats = 0;
-        viewModel.mealsBreakfast().forEach(function(meal) {
+        viewModel.mealsBreakfast().forEach(function (meal) {
             fats += parseFloat(meal.fats);
         });
-        viewModel.mealsLunch().forEach(function(meal) {
+        viewModel.mealsLunch().forEach(function (meal) {
             fats += parseFloat(meal.fats);
         });
-        viewModel.mealsDinner().forEach(function(meal) {
+        viewModel.mealsDinner().forEach(function (meal) {
             fats += parseFloat(meal.fats);
         });
         return fats.toPrecision(3);
     });
-    viewModel.getAllCarbohydrates = ko.computed(function() {
+    viewModel.getAllCarbohydrates = ko.computed(function () {
         var carbohydrates = 0;
-        viewModel.mealsBreakfast().forEach(function(meal) {
+        viewModel.mealsBreakfast().forEach(function (meal) {
             carbohydrates += parseFloat(meal.carbohydrates);
         });
-        viewModel.mealsLunch().forEach(function(meal) {
+        viewModel.mealsLunch().forEach(function (meal) {
             carbohydrates += parseFloat(meal.carbohydrates);
         });
-        viewModel.mealsDinner().forEach(function(meal) {
+        viewModel.mealsDinner().forEach(function (meal) {
             carbohydrates += parseFloat(meal.carbohydrates);
         });
         return carbohydrates.toPrecision(3);
     });
-    viewModel.getAllKCal = ko.computed(function() {
+    viewModel.getAllKCal = ko.computed(function () {
         var kcal = 0;
-        viewModel.mealsBreakfast().forEach(function(meal) {
+        viewModel.mealsBreakfast().forEach(function (meal) {
             kcal += parseFloat(meal.kcal);
         });
-        viewModel.mealsLunch().forEach(function(meal) {
+        viewModel.mealsLunch().forEach(function (meal) {
             kcal += parseFloat(meal.kcal);
         });
-        viewModel.mealsDinner().forEach(function(meal) {
+        viewModel.mealsDinner().forEach(function (meal) {
             kcal += parseFloat(meal.kcal);
         });
         return kcal.toPrecision(3);
@@ -186,11 +214,11 @@ window.havka = window.havka || {};
     function alphabetical(a, b) {
         var A = a.toLowerCase();
         var B = b.toLowerCase();
-        if (A < B){
+        if (A < B) {
             return -1;
-        }else if (A > B){
-            return  1;
-        }else{
+        } else if (A > B) {
+            return 1;
+        } else {
             return 0;
         }
     }

@@ -32,15 +32,19 @@
                     <form role="form">
                         <div class="form-group">
                             <label for="proteins">Макс. белков:</label>
-                            <input id="proteins" type="number" class="form-control">
+                            <input id="proteins" type="number" class="form-control" data-bind="value: maxProteins">
                         </div>
                         <div class="form-group">
                             <label for="fats">Макс. жиров:</label>
-                            <input id="fats" type="number" class="form-control">
+                            <input id="fats" type="number" class="form-control" data-bind="value: maxFats">
                         </div>
                         <div class="form-group">
                             <label for="carbohydrates">Макс. углеводов:</label>
-                            <input id="carbohydrates" type="number" class="form-control">
+                            <input id="carbohydrates" type="number" class="form-control" data-bind="value: maxCarbohydrates">
+                        </div>
+                        <div class="form-group">
+                            <label for="kcal">Макс. ккал:</label>
+                            <input id="kcal" type="number" class="form-control" data-bind="value: maxKCal">
                         </div>
                     </form>
                 </div>
@@ -96,8 +100,8 @@
                 </div>
                 <div class="panel-footer">
                     Всего:
-                    <span data-bind="text: getAllProteins"></span> жиров,
-                    <span data-bind="text: getAllFats"></span> белков,
+                    <span data-bind="text: getAllProteins"></span> белков,
+                    <span data-bind="text: getAllFats"></span> жиров,
                     <span data-bind="text: getAllCarbohydrates"></span> углеводов,
                     <span data-bind="text: getAllKCal"></span> Ккал
                 </div>
