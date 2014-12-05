@@ -19,6 +19,16 @@
     <link rel="stylesheet" href="css/ie10mobile.css" />
     <link rel="stylesheet" href="lib/durandal/css/durandal.css" />
     <link rel="stylesheet" href="css/starterkit.css" />
+    <link rel="import" href="../../lib/webcomponentsjs/webcomponents.min.js">
+    <link rel="import" href="../../lib/paper-spinner/paper-spinner.html">
+    <link rel="import" href="../../lib/core-toolbar/core-toolbar.html">
+    <link rel="import" href="../../lib/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="../../lib/paper-tabs/paper-tabs.html">
+    <style shim-shadowdom>
+        paper-spinner.blue::shadow .circle {
+            border-color: #4285f4;
+        }
+    </style>
 
     <script type="text/javascript">
         if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
@@ -32,10 +42,11 @@
 <body>
     <div id="applicationHost">
         <div class="splash">
-            <div class="message">
+            <!--<div class="message">
                 Durandal Starter Kit
-            </div>
-            <i class="fa fa-spinner fa-spin"></i>
+            </div>-->
+            <!--<i class="fa fa-spinner fa-spin"></i>-->
+            <paper-spinner class="blue" style="width: 150px; height: 150px;" active></paper-spinner>
         </div>
     </div>
 
